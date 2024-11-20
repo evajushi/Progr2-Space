@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
+    <groupId>Space</groupId>
     <artifactId>Progr2-Space</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Progr2-Space</name>
     <dependencies>
-        <!-- Προσθήκη εξαρτήσεων εδώ -->
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+          <version>4.12</version>
+          <scope>test</scope>
     </dependencies>
 </project>
