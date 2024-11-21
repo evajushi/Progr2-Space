@@ -17,5 +17,5 @@
         <artifactId>ortools-java</artifactId>
         <version>9.7</version>
         </dependency>
-        </dependencies>
+    </dependencies>
 </project>
