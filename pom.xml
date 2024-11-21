@@ -6,9 +6,16 @@
     <packaging>jar</packaging>
     <name>Progr2-Space</name>
     <dependencies>
+         <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
           <version>4.12</version>
           <scope>test</scope>
-    </dependencies>
+          </dependency>
+        <dependency>
+        <groupId>com.google.ortools</groupId>
+        <artifactId>ortools-java</artifactId>
+        <version>9.7</version>
+        </dependency>
+        </dependencies>
 </project>
