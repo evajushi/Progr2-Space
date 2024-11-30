@@ -27,7 +27,7 @@ public class Mainview implements Serializable {
 				}
 		};
 		panel.setLayout(new BorderLayout()); 
-        frame.add(panel);
+        	frame.add(panel);
         
        
         
