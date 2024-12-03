@@ -27,13 +27,37 @@ public class Mainview implements Serializable {
 				}
 		};
 		panel.setLayout(new BorderLayout()); 
+	        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         	frame.add(panel);
+
+		JLabel title = new JLabel("DocOptimizer", JLabel.CENTER);
+	        title.setForeground(Color.black);
+		title.setFont(new Font("Arial",Font.BOLD,50));
+		title.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+		title.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(title);
+		       
+		 panel.add(Box.createVerticalStrut(150));
         
-       
-        
-        
-        
-        
+		 JLabel description = new JLabel("Μπορείτε τώρα να κλείσετε ραντεβού γρήγορα και εύκολα", JLabel.CENTER);
+		 description.setForeground(Color.black);
+		 description.setFont(new Font("Arial", Font.PLAIN, 20));
+		 description.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+		 description.setAlignmentX(Component.CENTER_ALIGNMENT);
+		 panel.add(description);
+
+		        
+		 panel.add(Box.createVerticalStrut(250));
+		  
+		JButton enterButton = new JButton("Είσοδος στην εφαρμογή");
+		enterButton.setFont(new Font("Arial", Font.PLAIN, 20));
+		enterButton.setBackground(new Color(216, 167, 210)); 
+		enterButton.setForeground(Color.BLACK);
+		enterButton.setPreferredSize(new Dimension(300, 300)); // Μέγεθος κουμπιού
+		enterButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		       
+		panel.add(enterButton); 
+    
 		frame.setVisible(true);
 	
 	}
