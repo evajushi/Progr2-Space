@@ -1,29 +1,37 @@
+import java.time.LocalTime;
+import java.util.List;
+
 public class Doctor {
     private String name;
     private String surname;
     private String specialization;
-    private boolean availableTime;
-    
-    public Doctor(String name, String specialization, String availableTime, String surname) {
+    private List<LocalTime> availableTimeSlots;
+    private int availableMinutes; // Συνολικός διαθέσιμος χρόνος σε λεπτά
+
+    public Doctor(String name, String surname, String specialization, List<LocalTime> availableTimeSlots,
+            int availableMinutes) {
         this.name = name;
         this.surname = surname;
         this.specialization = specialization;
-        this.availableTime = availableTime;
+        this.availableTimeSlots = availableTimeSlots;
+        this.availableMinutes = availableMinutes;
     }
-    public String getName() { 
-        return name;
+
+    public boolean isAvailable(LocalTime time) {
+        return availableTimeSlots.contains(time);
     }
-    public String getSurname() {
-        return surname;
+
+    public int getAvailableMinutes() {
+        return availableMinutes;
     }
-    public String getSpecialization() { 
-        return specialization;
+
+    public String getFullname() {
+        return name + surname;
     }
-    public boolean getAvailableTime() { 
-        return availableTime;
-    }
+
     @Override
     public String toString() {
-        return  "Dr. " + name + " " + surname + " - Specialization: " + specialization + " | Available: " + availableTime;
+        return "Dr. " + name + " " + surname + " - Specialization: " + specialization +
+                " | Available slots: " + availableTimeSlots;
     }
 }

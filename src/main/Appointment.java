@@ -1,41 +1,41 @@
+import java.time.LocalDateTime;
+
 public class Appointment {
-
     private String specialization;
-    private String time;
-    private String date;
+    private LocalDateTime dateTime;
     private Patient patient;
+    private Doctor doctor;
+    private int priority; // Προτεραιότητα
+    private int duration; // Διάρκεια σε λεπτά
 
-    public Appointment(String specializatiion, String time, String date, Patient patient) {
-
+    public Appointment(String specialization, LocalDateTime dateTime, Patient patient, Doctor doctor, int priority,
+            int duration) {
         this.specialization = specialization;
-        this.time = time;
-        this.date = date;
+        this.dateTime = dateTime;
         this.patient = patient;
+        this.doctor = doctor;
+        this.priority = priority;
+        this.duration = duration;
     }
 
-    public String getSpecialization() {
-
-        return specialization;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public String getTime(){
-
-        return time;
+    public int getPriority() {
+        return priority;
     }
 
-    public String getDate(){
-
-        return date;
+    public int getDuration() {
+        return duration;
     }
 
-    public Patient getPatient(){
-        return patient;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    @Override
-    public String toString() {
-        
-        return "Appointment{" + "specialization='" + specialization + '\'' +
-         ", time='" + time + '\'' + ", date='" + date + '\'' + ", patient=" + patient.getName() + '}';
+    public String getDetails() {
+        return "Specialization: " + specialization + ", Patient: " + patient.getName() +
+                ", Doctor: " + doctor.getFullname();
     }
-} 
+}

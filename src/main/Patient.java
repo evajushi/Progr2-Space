@@ -10,8 +10,8 @@ public class Patient {
     private String amka;
     private String gender;
 
-    public Patient(String name, String surname, String dateOfBirth, String address, String phoneNumber, String email, 
-        String medicalRecord, String amka) {
+    public Patient(String name, String surname, String dateOfBirth, String address, String phoneNumber, String email,
+            String medicalRecord, String amka, String gender) {
 
         this.name = name;
         this.surname = surname;
@@ -40,7 +40,7 @@ public class Patient {
     }
 
     public String getAddress() {
-            
+
         return address;
     }
 
@@ -72,8 +72,10 @@ public class Patient {
     @Override
     public String toString() {
 
-        return "Patient{" + "name='" + name + '\'' + ", surname='" + surname + '\'' + ", dateOfBirth='" + dateOfBirth + '\'' +
-        ", address='" + address + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", email='" + email + '\'' +
-        ", medicalRecord='" + medicalRecord + '\'' + ", amka='" + amka + '\'' + ", gender='" + gender + '\'' + '}';
+        return "Patient{" + "name='" + name + '\'' + ", surname='" + surname + '\'' + ", dateOfBirth='" + dateOfBirth
+                + '\'' +
+                ", address='" + address + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", email='" + email + '\'' +
+                ", medicalRecord='" + medicalRecord + '\'' + ", amka='" + amka + '\'' + ", gender='" + gender + '\''
+                + '}';
     }
 }

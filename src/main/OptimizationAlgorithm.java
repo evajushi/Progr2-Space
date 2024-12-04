@@ -1,5 +1,4 @@
 import com.google.ortools.linearsolver.*;
-
 import java.util.List;
 
 public class OptimizationAlgorithm {
@@ -16,14 +15,13 @@ public class OptimizationAlgorithm {
     }
 
     public void optimizeSchedule() {
-        Solver solver = Solver.createSolver("GLOP"); // Χρήση γραμμικού επιλυτή
+        Solver solver = Solver.createSolver("GLOP");
 
         if (solver == null) {
             System.out.println("Linear solver is not available.");
             return;
         }
 
-        // 1. Μεταβλητές: Ραντεβού ανά γιατρό
         int numDoctors = doctors.size();
         int numAppointments = appointments.size();
         Variable[][] x = new Variable[numDoctors][numAppointments];
@@ -34,16 +32,14 @@ public class OptimizationAlgorithm {
             }
         }
 
-        // 2. Περιορισμός 1: Ένα ραντεβού ανατίθεται σε έναν γιατρό
         for (int j = 0; j < numAppointments; j++) {
             LinearExpr.Builder constraint = LinearExpr.newBuilder();
             for (int i = 0; i < numDoctors; i++) {
                 constraint.addTerm(x[i][j], 1);
             }
-            solver.addConstraint(constraint.build(), 1, 1); // Κάθε ραντεβού ανατίθεται σε έναν γιατρό
+            solver.addConstraint(constraint.build(), 1, 1);
         }
 
-        // 3. Περιορισμός 2: Τα ραντεβού δεν υπερβαίνουν τη διαθεσιμότητα των γιατρών
         for (int i = 0; i < numDoctors; i++) {
             LinearExpr.Builder constraint = LinearExpr.newBuilder();
             for (int j = 0; j < numAppointments; j++) {
@@ -52,7 +48,6 @@ public class OptimizationAlgorithm {
             solver.addConstraint(constraint.build(), 0, doctors.get(i).getAvailableMinutes());
         }
 
-        // 4. Στόχος: Ελαχιστοποίηση κενών χρόνων
         LinearExpr.Builder objective = LinearExpr.newBuilder();
         for (int i = 0; i < numDoctors; i++) {
             for (int j = 0; j < numAppointments; j++) {
@@ -62,7 +57,6 @@ public class OptimizationAlgorithm {
         solver.objective().setMaximization();
         solver.objective().setLinearExpr(objective.build());
 
-        // 5. Επίλυση
         Solver.ResultStatus resultStatus = solver.solve();
         if (resultStatus == Solver.ResultStatus.OPTIMAL) {
             System.out.println("Optimal solution found:");
