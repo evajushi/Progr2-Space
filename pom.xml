@@ -3,7 +3,10 @@
     <groupId>Space</groupId>
     <artifactId>Progr2-Space</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
+    <modules>
+        
+    </modules>
     <name>Progr2-Space</name>
     <dependencies>
          <dependency>
@@ -12,10 +15,39 @@
           <version>4.12</version>
           <scope>test</scope>
           </dependency>
-        <dependency>
-        <groupId>com.google.ortools</groupId>
-        <artifactId>ortools-java</artifactId>
-        <version>9.7</version>
-        </dependency>
+    <dependency>
+    <groupId>com.google.ortools</groupId>
+    <artifactId>ortools-java</artifactId>
+    <version>9.11.4210</version>
+    </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>google-maven-repo</id>
+         <url>https://maven.google.com</url>
+        </repository>
+    </repositories>
+
+    <!-- Εκτέλεση της κλάσης Main -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>Main</mainClass> <!-- Ορίζεις την κλάση Main -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
