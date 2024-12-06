@@ -1,11 +1,10 @@
-import com.google.ortools.linearsolver.*;
+package space;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class OptimizationAlgorithm {
-    static {
-        System.loadLibrary("jniortools"); // Φορτώνει τις βιβλιοθήκες OR-Tools
-    }
-
     private List<Appointment> appointments;
     private List<Doctor> doctors;
 
@@ -15,60 +14,48 @@ public class OptimizationAlgorithm {
     }
 
     public void optimizeSchedule() {
-        Solver solver = Solver.createSolver("GLOP");
+        // Ταξινόμηση ραντεβού κατά προτεραιότητα (από υψηλή σε χαμηλή)
+        appointments.sort(Comparator.comparingInt(Appointment::getPriority).reversed());
 
-        if (solver == null) {
-            System.out.println("Linear solver is not available.");
-            return;
-        }
+        // Κατανομή ραντεβού στους διαθέσιμους γιατρούς
+        List<Appointment> unassignedAppointments = new ArrayList<>();
+        for (Appointment appointment : appointments) {
+            boolean assigned = false;
 
-        int numDoctors = doctors.size();
-        int numAppointments = appointments.size();
-        Variable[][] x = new Variable[numDoctors][numAppointments];
+            for (Doctor doctor : doctors) {
+                // Έλεγχος ειδικότητας
+                if (!doctor.getSpecialization().equalsIgnoreCase(appointment.getDoctor().getSpecialization())) {
+                    continue;
+                }
 
-        for (int i = 0; i < numDoctors; i++) {
-            for (int j = 0; j < numAppointments; j++) {
-                x[i][j] = solver.makeIntVar(0, 1, "x_" + i + "_" + j);
-            }
-        }
+                // Έλεγχος διαθεσιμότητας για το συγκεκριμένο χρονικό διάστημα
+                if (doctor.isAvailable(appointment.getDateTime().toLocalTime())
+                        && doctor.getAvailableMinutes() >= appointment.getDuration()) {
 
-        for (int j = 0; j < numAppointments; j++) {
-            LinearExpr.Builder constraint = LinearExpr.newBuilder();
-            for (int i = 0; i < numDoctors; i++) {
-                constraint.addTerm(x[i][j], 1);
-            }
-            solver.addConstraint(constraint.build(), 1, 1);
-        }
+                    // Ενημέρωση διαθέσιμων λεπτών του γιατρού
+                    doctor.setAvailableMinutes(doctor.getAvailableMinutes() - appointment.getDuration());
 
-        for (int i = 0; i < numDoctors; i++) {
-            LinearExpr.Builder constraint = LinearExpr.newBuilder();
-            for (int j = 0; j < numAppointments; j++) {
-                constraint.addTerm(x[i][j], appointments.get(j).getDuration());
-            }
-            solver.addConstraint(constraint.build(), 0, doctors.get(i).getAvailableMinutes());
-        }
-
-        LinearExpr.Builder objective = LinearExpr.newBuilder();
-        for (int i = 0; i < numDoctors; i++) {
-            for (int j = 0; j < numAppointments; j++) {
-                objective.addTerm(x[i][j], appointments.get(j).getPriority());
-            }
-        }
-        solver.objective().setMaximization();
-        solver.objective().setLinearExpr(objective.build());
-
-        Solver.ResultStatus resultStatus = solver.solve();
-        if (resultStatus == Solver.ResultStatus.OPTIMAL) {
-            System.out.println("Optimal solution found:");
-            for (int i = 0; i < numDoctors; i++) {
-                for (int j = 0; j < numAppointments; j++) {
-                    if (x[i][j].solutionValue() == 1.0) {
-                        System.out.println("Appointment " + j + " assigned to Doctor " + i);
-                    }
+                    // Εμφάνιση ανάθεσης
+                    System.out.println("Assigned: " + appointment.getDetails() +
+                            " to Doctor: " + doctor.getFullname());
+                    assigned = true;
+                    break;
                 }
             }
-        } else {
-            System.out.println("No optimal solution found.");
+
+            // Αν το ραντεβού δεν βρήκε διαθέσιμο γιατρό
+            if (!assigned) {
+                System.out.println("Could not assign appointment: " + appointment.getDetails());
+                unassignedAppointments.add(appointment);
+            }
+        }
+
+        // Εμφάνιση μη ανατεθειμένων ραντεβού
+        if (!unassignedAppointments.isEmpty()) {
+            System.out.println("\n--- Unassigned Appointments ---");
+            for (Appointment unassigned : unassignedAppointments) {
+                System.out.println(unassigned.getDetails() + " at " + unassigned.getDateTime());
+            }
         }
     }
 }

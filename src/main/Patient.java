@@ -1,3 +1,5 @@
+package space;
+
 public class Patient {
 
     private String name;

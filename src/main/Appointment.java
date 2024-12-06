@@ -1,3 +1,5 @@
+package space;
+
 import java.time.LocalDateTime;
 
 public class Appointment {
@@ -10,6 +12,9 @@ public class Appointment {
 
     public Appointment(String specialization, LocalDateTime dateTime, Patient patient, Doctor doctor, int priority,
             int duration) {
+        if (specialization == null || dateTime == null || patient == null || doctor == null) {
+            throw new IllegalArgumentException("Appointment fields cannot be null");
+        }
         this.specialization = specialization;
         this.dateTime = dateTime;
         this.patient = patient;
@@ -37,5 +42,16 @@ public class Appointment {
     public String getDetails() {
         return "Specialization: " + specialization + ", Patient: " + patient.getName() +
                 ", Doctor: " + doctor.getFullname();
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment[" + "specialization='" + specialization + '\'' +
+                ", dateTime=" + dateTime +
+                ", patient=" + patient.getName() +
+                ", doctor=" + doctor.getFullname() +
+                ", priority=" + priority +
+                ", duration=" + duration +
+                ']';
     }
 }

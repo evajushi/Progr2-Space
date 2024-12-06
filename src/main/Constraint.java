@@ -1,20 +1,25 @@
+package space;
+
 import java.time.LocalTime;
 import java.util.List;
 
 public class Constraint {
     private List<Doctor> availableDoctors;
 
-    public Constraint(String description, List<Doctor> availableDoctors) {
+    public Constraint(List<Doctor> availableDoctors) {
+        if (availableDoctors == null || availableDoctors.isEmpty()) {
+            throw new IllegalArgumentException("Available doctors cannot be null or empty");
+        }
         this.availableDoctors = availableDoctors;
     }
 
     public boolean isSatisfied(Appointment appointment) {
         LocalTime time = appointment.getDateTime().toLocalTime();
-        for (Doctor doctor : availableDoctors) {
-            if (doctor.isAvailable(time)) {
-                return true; // Υπάρχει διαθέσιμος γιατρός.
-            }
-        }
-        return false; // Κανένας γιατρός δεν είναι διαθέσιμος.
+        return availableDoctors.stream().anyMatch(doctor -> doctor.isAvailable(time));
+    }
+
+    @Override
+    public String toString() {
+        return "Constraint{" + "availableDoctors=" + availableDoctors + '}';
     }
 }
