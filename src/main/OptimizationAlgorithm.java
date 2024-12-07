@@ -58,4 +58,12 @@ public class OptimizationAlgorithm {
             }
         }
     }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public List<Doctor> geDoctors() {
+        return doctors;
+    }
 }

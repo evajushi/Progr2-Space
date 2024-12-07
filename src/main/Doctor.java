@@ -30,6 +30,10 @@ public class Doctor {
         return availableMinutes;
     }
 
+    public List<LocalTime> getAvailableTimeSlots() {
+        return availableTimeSlots;
+    }
+
     public String getSpecialization() {
         return specialization;
     }

@@ -8,12 +8,11 @@ public class Patient {
     private String address;
     private String phoneNumber;
     private String email;
-    private String medicalRecord;
-    private String amka;
+    private int amka;
     private String gender;
 
     public Patient(String name, String surname, String dateOfBirth, String address, String phoneNumber, String email,
-            String medicalRecord, String amka, String gender) {
+            int amka, String gender) {
 
         this.name = name;
         this.surname = surname;
@@ -21,7 +20,6 @@ public class Patient {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.medicalRecord = medicalRecord;
         this.amka = amka;
         this.gender = gender;
     }
@@ -56,12 +54,7 @@ public class Patient {
         return email;
     }
 
-    public String getMedicalRecord() {
-
-        return medicalRecord;
-    }
-
-    public String getAmka() {
+    public int getAmka() {
 
         return amka;
     }
@@ -77,7 +70,7 @@ public class Patient {
         return "Patient{" + "name='" + name + '\'' + ", surname='" + surname + '\'' + ", dateOfBirth='" + dateOfBirth
                 + '\'' +
                 ", address='" + address + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", email='" + email + '\'' +
-                ", medicalRecord='" + medicalRecord + '\'' + ", amka='" + amka + '\'' + ", gender='" + gender + '\''
+                '\'' + ", amka='" + amka + '\'' + ", gender='" + gender + '\''
                 + '}';
     }
 }
