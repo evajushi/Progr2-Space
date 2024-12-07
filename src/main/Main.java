@@ -34,5 +34,15 @@ public class Main {
         // Βελτιστοποίηση ραντεβού
         OptimizationAlgorithm optimizer = new OptimizationAlgorithm(appointments, doctors);
         optimizer.optimizeSchedule();
+
+        // Ειδοποίηση κάθε γιατρού για τα ραντεβού που έχουν προγραμματιστεί στο πρόγραμμά του
+        for (Doctor doc : doctors) {
+                nm.notifyDoctor(doc, appointments);
+        }
+
+        // Ειδοποίηση κάθε ασθενή για τα ραντεβού του
+        for (Patient patient : patients) {
+                nm.notifyPatient(patient, appointments);
+        }
     }
 }
