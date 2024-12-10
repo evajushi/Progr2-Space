@@ -9,6 +9,7 @@ public class Doctor {
     private String specialization;
     private List<LocalTime> availableTimeSlots;
     private int availableMinutes; // Συνολικός διαθέσιμος χρόνος σε λεπτά
+    private String docCode;
 
     public Doctor(String name, String surname, String specialization, List<LocalTime> availableTimeSlots,
             int availableMinutes) {
@@ -47,6 +48,10 @@ public class Doctor {
 
     public String getFullname() {
         return name + " " + surname;
+    }
+
+    public String getDocCode() {
+        return  docCode;
     }
 
     @Override
