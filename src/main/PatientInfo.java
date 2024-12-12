@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PatientInfo extends JFrame {
     private JButton yesButton;
@@ -49,6 +51,14 @@ public class PatientInfo extends JFrame {
 
         gbc.gridx = 1;
         add(noButton, gbc);
+
+         yesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); 
+                new IsOldPatient(); 
+            }
+        });
 
         setVisible(true);
     }
