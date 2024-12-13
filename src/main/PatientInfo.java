@@ -52,11 +52,19 @@ public class PatientInfo extends JFrame {
         gbc.gridx = 1;
         add(noButton, gbc);
 
-         yesButton.addActionListener(new ActionListener() {
+        yesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose(); 
                 new IsOldPatient(); 
+            }
+        });
+
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); 
+                new IsNewPatient(); 
             }
         });
 
