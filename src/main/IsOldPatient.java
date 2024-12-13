@@ -12,34 +12,34 @@ class IsOldPatient extends JFrame {
         Color lightBlue = new Color(230, 245, 255);
         getContentPane().setBackground(lightBlue);
 
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(20, 20, 10, 20); 
+        gbc.anchor = GridBagConstraints.CENTER; 
 
         JLabel amkaLabel = new JLabel("Παρακαλώ εισάγετε το ΑΜΚΑ σας:");
         amkaLabel.setFont(new Font("Arial", Font.BOLD, 24));
         amkaLabel.setForeground(Color.BLACK);
-        amkaLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        amkaLabel.setBorder(BorderFactory.createEmptyBorder(50, 10, 0, 0));
 
-        JTextField amka = new JTextField();
-        amka.setFont(new Font("Arial", Font.PLAIN, 14));
-        amka.setPreferredSize(new Dimension(500, 30)); 
-        amka.setMaximumSize(new Dimension(500, 30));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(amkaLabel, gbc);
+
+        JTextField amka = new JTextField(20);
+        amka.setFont(new Font("Arial", Font.PLAIN, 20));
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(amka, gbc);
 
         JButton submitButton = new JButton("Υποβολή");
-        submitButton.setFont(new Font("Arial", Font.BOLD, 14));
+        submitButton.setFont(new Font("Arial", Font.BOLD, 16));
         submitButton.setBackground(new Color(173, 216, 230));
-        submitButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        add(submitButton, gbc);
 
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
-        inputPanel.setBackground(lightBlue);
-        inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        inputPanel.add(amka);
-        inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        inputPanel.add(submitButton);
-
-        add(amkaLabel, BorderLayout.NORTH);
-        add(inputPanel, BorderLayout.WEST);
+        setLocationRelativeTo(null);
+        
         setVisible(true);
         
     }
