@@ -5,7 +5,7 @@ class IsOldPatient extends JFrame {
 
     public IsOldPatient() {
     	
-        setTitle("ΑΦΜ");
+        setTitle("AMKA");
         setSize(2000, 900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
