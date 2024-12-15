@@ -1,10 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
-import java.io.Serializable;
 
-public class Mainview implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Mainview  {
+	private static final int WINDOW_WIDTH = 1200; 
+	private static final int WINDOW_HEIGHT = 800;
 	
 	public static void main(String[] args) {
 		
@@ -12,7 +11,7 @@ public class Mainview implements Serializable {
 		frame.setTitle("Διαχείριση Ραντεβού σε Ιατρείο");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frame.setResizable(false); 
-		frame.setSize(1200,800);
+		frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		
 		JPanel panel = new JPanel() {
 			private static final long serialVersionUID = 1L;
