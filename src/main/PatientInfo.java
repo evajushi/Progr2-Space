@@ -4,12 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PatientInfo extends JFrame {
+    private static final int WINDOW_WIDTH = 1200; 
+    private static final int WINDOW_HEIGHT = 800;
     private JButton yesButton;
     private JButton noButton;
     
     public PatientInfo() {
         setTitle("Στοιχεία Ασθενή");
-        setSize(2000, 900);
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         Color lightBlue = new Color(230, 245, 255); 
@@ -20,6 +22,14 @@ public class PatientInfo extends JFrame {
         gbc.insets = new Insets(20, 20, 20, 20);
         
         //ρωτάμε τον χρήστη αν έχει ξανακλείσει ραντεβού, ώστε να συλλέξουμε τα στοιχεία του από τη βάση δεδομένων, εφόσον αυτό είναι δυνατό
+        createQuestionLabel(gbc);
+        createButtons(gbc);
+        
+        setVisible(true);
+    }
+    
+    private void createQuestionLabel(GridBagConstraints gbc) {
+        
         JLabel questionLabel = new JLabel("Έχετε ξανακλείσει ραντεβού;", SwingConstants.CENTER);
         questionLabel.setFont(new Font("Arial", Font.BOLD, 24));
         questionLabel.setForeground(Color.BLACK);
@@ -29,7 +39,11 @@ public class PatientInfo extends JFrame {
         gbc.gridwidth = 2; 
         gbc.anchor = GridBagConstraints.CENTER;
         add(questionLabel, gbc);
+        
+    }
 
+    private void createButtons(GridBagConstraints gbc) {
+        
         yesButton = new JButton("Ναι");
         noButton = new JButton("Όχι");
         
@@ -52,23 +66,16 @@ public class PatientInfo extends JFrame {
         gbc.gridx = 1;
         add(noButton, gbc);
 
-        yesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); 
-                new IsOldPatient(); 
-            }
+        yesButton.addActionListener(e -> {
+            dispose();
+            new IsOldPatient(); 
         });
 
-        noButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); 
-                new IsNewPatient(); 
-            }
+        noButton.addActionListener(e -> {
+            dispose(); 
+            new IsNewPatient(); 
         });
-
-        setVisible(true);
+   
     }
     
 
