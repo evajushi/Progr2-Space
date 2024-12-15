@@ -12,7 +12,7 @@ public class Mainview implements Serializable {
 		frame.setTitle("Διαχείριση Ραντεβού σε Ιατρείο");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frame.setResizable(false); 
-		frame.setSize(2000,900);
+		frame.setSize(1200,800);
 		
 		JPanel panel = new JPanel() {
 			private static final long serialVersionUID = 1L;
@@ -53,7 +53,7 @@ public class Mainview implements Serializable {
 		enterButton.setFont(new Font("Arial", Font.PLAIN, 20));
 		enterButton.setBackground(new Color(216, 167, 210)); 
 		enterButton.setForeground(Color.BLACK);
-		enterButton.setPreferredSize(new Dimension(300, 300)); // Μέγεθος κουμπιού
+		enterButton.setPreferredSize(new Dimension(200, 200)); 
 		enterButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		       
 		panel.add(enterButton); 
