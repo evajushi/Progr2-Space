@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Mainview  {
+public class AppointmentWelcomeScreen  {
 	private static final int WINDOW_WIDTH = 1200; 
 	private static final int WINDOW_HEIGHT = 800;
 	
@@ -14,7 +14,6 @@ public class Mainview  {
 		frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		
 		JPanel panel = new JPanel() {
-			private static final long serialVersionUID = 1L;
 			
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -25,8 +24,8 @@ public class Mainview  {
 				g2d.fillRect(0, 0, getWidth(), getHeight());
 				}
 		};
-		panel.setLayout(new BorderLayout()); 
-	        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         	frame.add(panel);
 
 		JLabel title = new JLabel("DocOptimizer", JLabel.CENTER);
@@ -36,17 +35,17 @@ public class Mainview  {
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(title);
 		       
-		 panel.add(Box.createVerticalStrut(250));
+		panel.add(Box.createVerticalStrut(250));
         
-		 JLabel description = new JLabel("Μπορείτε τώρα να κλείσετε ραντεβού γρήγορα και εύκολα", JLabel.CENTER);
-		 description.setForeground(Color.black);
-		 description.setFont(new Font("Arial", Font.PLAIN, 20));
-		 description.setBorder(BorderFactory.createEmptyBorder(90, 0, 0, 0));
-		 description.setAlignmentX(Component.CENTER_ALIGNMENT);
-		 panel.add(description);
+		JLabel description = new JLabel("Μπορείτε τώρα να κλείσετε ραντεβού γρήγορα και εύκολα", JLabel.CENTER);
+		description.setForeground(Color.black);
+		description.setFont(new Font("Arial", Font.PLAIN, 20));
+		description.setBorder(BorderFactory.createEmptyBorder(90, 0, 0, 0));
+		description.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(description);
 
 		        
-		 panel.add(Box.createVerticalStrut(30));
+		panel.add(Box.createVerticalStrut(30));
 		  
 		JButton enterButton = new JButton("Είσοδος στην εφαρμογή");
 		enterButton.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -58,6 +57,11 @@ public class Mainview  {
 		panel.add(enterButton); 
     
 		frame.setVisible(true);
+
+		enterButton.addActionListener(e -> {
+            	   frame.dispose();
+                   new PatientInfo(); 
+                });
 	
 	}
 } 
