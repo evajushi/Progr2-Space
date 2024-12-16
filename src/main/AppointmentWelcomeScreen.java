@@ -31,11 +31,11 @@ public class AppointmentWelcomeScreen  {
 		JLabel title = new JLabel("DocOptimizer", JLabel.CENTER);
 	        title.setForeground(Color.black);
 		title.setFont(new Font("Arial",Font.BOLD,50));
-		title.setBorder(BorderFactory.createEmptyBorder(100, 0, 0, 0));
+		title.setBorder(BorderFactory.createEmptyBorder(200, 0, 0, 0));
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(title);
 		       
-		panel.add(Box.createVerticalStrut(250));
+		panel.add(Box.createVerticalStrut(120));
         
 		JLabel description = new JLabel("Μπορείτε τώρα να κλείσετε ραντεβού γρήγορα και εύκολα", JLabel.CENTER);
 		description.setForeground(Color.black);
@@ -45,13 +45,13 @@ public class AppointmentWelcomeScreen  {
 		panel.add(description);
 
 		        
-		panel.add(Box.createVerticalStrut(30));
+		panel.add(Box.createVerticalStrut(50));
 		  
 		JButton enterButton = new JButton("Είσοδος στην εφαρμογή");
 		enterButton.setFont(new Font("Arial", Font.PLAIN, 20));
 		enterButton.setBackground(new Color(216, 167, 210)); 
 		enterButton.setForeground(Color.BLACK);
-		enterButton.setPreferredSize(new Dimension(200, 200)); 
+		enterButton.setPreferredSize(new Dimension(120, 50)); 
 		enterButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		       
 		panel.add(enterButton); 
