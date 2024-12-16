@@ -68,12 +68,12 @@ public class PatientInfo extends JFrame {
 
         yesButton.addActionListener(e -> {
             dispose();
-            new IsOldPatient(); 
+            new OldPatientWindow(); 
         });
 
         noButton.addActionListener(e -> {
             dispose(); 
-            new IsNewPatient(); 
+            new NewPatientWindow(); 
         });
    
     }
