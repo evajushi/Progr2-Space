@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-class IsOldPatient extends JFrame {
+class OldPatientWindow extends JFrame {
 
-    public IsOldPatient() {
+    public OldPatientWindow() {
     	
         setTitle("AMKA");
         setSize(2000, 900);
@@ -46,7 +46,7 @@ class IsOldPatient extends JFrame {
 
     public static void main(String[] args) {
     	
-        new IsOldPatient();
+        new OldPatientWindow();
         
     }
   
