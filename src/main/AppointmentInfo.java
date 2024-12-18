@@ -139,14 +139,14 @@ public class AppointmentInfo extends JFrame {
         add(submitButton, gbc); 
 
         submitButton.addActionListener(e -> {
-		    new PatientInfo(); 
-		    frame.dispose(); 
+		    dispose(); 
+		    new PatientInfo(); 		
         });
     }
 
     
     public static void main(String[] args) {
-        DocInfo frame = new DocInfo(); 
+        AppointmentInfo frame = new AppointmentInfo(); 
         frame.setVisible(true);        
     }
 }
