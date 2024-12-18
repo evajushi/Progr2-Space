@@ -20,6 +20,35 @@ public class AppointmentInfo extends JFrame {
         addButton();
     }
 
+     private void selectAppointment() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(30, 60, 20, 20); 
+        gbc.anchor = GridBagConstraints.WEST; 
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setBackground(Color.WHITE);
+        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        
+        JLabel label = new JLabel("Επιλέξτε τύπο ραντεβού");
+        label.setFont(new Font("Arial", Font.PLAIN, 14));
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(label, BorderLayout.NORTH);
+        
+        String[] options = {"Παθολόγος", "Καρδιολόγος", "Γυναικολόγος", "Ορθοπαιδικός", "Δερματολόγος", 
+                            "Παιδίατρος", "Νευρολόγος", "Ενδοκρινολόγος", "Ψυχίατρος", "Οφθαλμίατρος"};
+        
+        JComboBox<String> comboBox = new JComboBox<>(options);
+        comboBox.setFont(new Font("Arial", Font.PLAIN, 14));
+        comboBox.setPreferredSize(new Dimension(300, 40));
+        panel.add(comboBox, BorderLayout.CENTER);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0; 
+        add(panel, gbc);
+    }
+
 private void addButton() {
         JButton submitButton = new JButton("Συνέχεια");
         submitButton.setFont(new Font("Arial", Font.PLAIN, 20));
