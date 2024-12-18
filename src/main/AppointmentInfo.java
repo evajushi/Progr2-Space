@@ -42,7 +42,7 @@ public class AppointmentInfo extends JFrame {
         
         JComboBox<String> comboBox = new JComboBox<>(options);
         comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
-        comboBox.setPreferredSize(new Dimension(300, 40));
+        comboBox.setPreferredSize(new Dimension(420, 40));
         panel.add(comboBox, BorderLayout.CENTER);
         
         gbc.gridx = 0;
