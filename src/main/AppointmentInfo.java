@@ -33,7 +33,7 @@ public class AppointmentInfo extends JFrame {
         panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         
         JLabel label = new JLabel("Επιλέξτε τύπο ραντεβού");
-        label.setFont(new Font("Arial", Font.PLAIN, 14));
+        label.setFont(new Font("Arial", Font.PLAIN, 22));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(label, BorderLayout.NORTH);
         
@@ -41,7 +41,7 @@ public class AppointmentInfo extends JFrame {
                             "Παιδίατρος", "Νευρολόγος", "Ενδοκρινολόγος", "Ψυχίατρος", "Οφθαλμίατρος"};
         
         JComboBox<String> comboBox = new JComboBox<>(options);
-        comboBox.setFont(new Font("Arial", Font.PLAIN, 14));
+        comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
         comboBox.setPreferredSize(new Dimension(300, 40));
         panel.add(comboBox, BorderLayout.CENTER);
         
