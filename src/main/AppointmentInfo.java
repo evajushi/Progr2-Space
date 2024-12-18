@@ -49,7 +49,7 @@ public class AppointmentInfo extends JFrame {
         add(panel, gbc);
     }
 
-private void addButton() {
+    private void addButton() {
         JButton submitButton = new JButton("Συνέχεια");
         submitButton.setFont(new Font("Arial", Font.PLAIN, 20));
         submitButton.setBackground(new Color(173, 216, 230));
@@ -64,7 +64,9 @@ private void addButton() {
         gbc.anchor = GridBagConstraints.CENTER; 
         add(submitButton, gbc); 
     }
-public static void main(String[] args) {
+
+    
+    public static void main(String[] args) {
         DocInfo frame = new DocInfo(); 
         frame.setVisible(true);        
     }
