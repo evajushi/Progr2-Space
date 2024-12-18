@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.text.MaskFormatter;
 
 public class AppointmentInfo extends JFrame {
     private static final int WINDOW_WIDTH = 1200; 
