@@ -139,7 +139,7 @@ public class AppointmentInfo extends JFrame {
         submitButton.addActionListener(e -> {
 		    new PatientInfo(); 
 		    frame.dispose(); 
-		});
+        });
     }
 
     
