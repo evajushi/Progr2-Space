@@ -65,6 +65,11 @@ class OldPatientWindow extends JFrame {
         gbc.gridy = 2;
         add(submitButton, gbc);
 
+        submitButton.addActionListener(e -> {
+            dispose();
+            new AppointmentFinalScreen(); 
+        });
+
     }
 
 
