@@ -21,6 +21,7 @@ public class AppointmentInfo extends JFrame {
         selectDateAndTime();
         addButton();
     }
+    
 
      private void selectAppointment() {
         GridBagConstraints gbc = new GridBagConstraints();
@@ -50,6 +51,73 @@ public class AppointmentInfo extends JFrame {
         gbc.weightx = 1.0; 
         add(panel, gbc);
     }
+
+    
+    private void selectDateAndTime() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(150, 60, 20, 20); 
+        gbc.anchor = GridBagConstraints.WEST; 
+
+        JPanel dateTimePanel = new JPanel(new GridBagLayout());
+        dateTimePanel.setBackground(Color.WHITE);
+      
+        TitledBorder border = BorderFactory.createTitledBorder("Επιλέξτε Ημερομηνία και Ώρα");
+        border.setTitleFont(new Font("Arial", Font.PLAIN, 22)); 
+        dateTimePanel.setBorder(border);
+
+        GridBagConstraints innerGbc = new GridBagConstraints();
+        innerGbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel dateLabel = new JLabel("Ημερομηνία:");
+        dateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        innerGbc.gridx = 0;
+        innerGbc.gridy = 0;
+        innerGbc.anchor = GridBagConstraints.WEST;
+        dateTimePanel.add(dateLabel, innerGbc);
+
+        MaskFormatter dateFormatter = null;
+        try {
+            dateFormatter = new MaskFormatter("##/##/####");
+            dateFormatter.setPlaceholderCharacter('_');
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        JFormattedTextField dateField = new JFormattedTextField(dateFormatter);
+        dateField.setFont(new Font("Arial", Font.PLAIN, 16));
+        dateField.setColumns(10);
+        innerGbc.gridx = 1;
+        innerGbc.gridy = 0;
+        innerGbc.fill = GridBagConstraints.HORIZONTAL;
+        dateTimePanel.add(dateField, innerGbc);
+
+        JLabel timeLabel = new JLabel("Ώρα:");
+        timeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        innerGbc.gridx = 0;
+        innerGbc.gridy = 1;
+        innerGbc.anchor = GridBagConstraints.WEST;
+        dateTimePanel.add(timeLabel, innerGbc);
+
+        timeComboBox = new JComboBox<>(new String[]{
+            "09:00", "09:30", "10:00", "10:30", "11:00", 
+            "11:30", "12:00", "12:30", "13:00", "13:30", 
+            "14:00", "14:30", "15:00", "15:30", "16:00", 
+            "16:30", "17:00"
+        });
+        
+        timeComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
+        timeComboBox.setPreferredSize(new Dimension(300, 30));
+        innerGbc.gridx = 1;
+        innerGbc.gridy = 1;
+        innerGbc.fill = GridBagConstraints.HORIZONTAL;
+        dateTimePanel.add(timeComboBox, innerGbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 1.0; // Επέκταση προς τα αριστερά
+        add(dateTimePanel, gbc);
+    }
+    
 
     private void addButton() {
         JButton submitButton = new JButton("Συνέχεια");
