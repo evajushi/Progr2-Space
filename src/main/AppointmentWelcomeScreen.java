@@ -60,7 +60,7 @@ public class AppointmentWelcomeScreen  {
 
 		enterButton.addActionListener(e -> {
             	   frame.dispose();
-                   new PatientInfo(); 
+                   new AppointmentInfo(); 
                 });
 	
 	}
