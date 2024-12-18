@@ -6,7 +6,9 @@ import javax.swing.border.TitledBorder;
 public class AppointmentInfo extends JFrame {
     private static final int WINDOW_WIDTH = 1200; 
     private static final int WINDOW_HEIGHT = 800;
+    private JComboBox<String> timeComboBox;
 
+	
     public AppointmentInfo() {
         setTitle("Κλείστε Ραντεβού");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
