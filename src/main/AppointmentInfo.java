@@ -20,6 +20,8 @@ public class AppointmentInfo extends JFrame {
         selectAppointment();
         selectDateAndTime();
         addButton();
+
+        setVisible(true);
     }
     
 
@@ -133,6 +135,11 @@ public class AppointmentInfo extends JFrame {
         gbc.insets = new Insets(100, 20, 20, 20); 
         gbc.anchor = GridBagConstraints.CENTER; 
         add(submitButton, gbc); 
+
+        submitButton.addActionListener(e -> {
+		    new PatientInfo(); 
+		    frame.dispose(); 
+		});
     }
 
     
