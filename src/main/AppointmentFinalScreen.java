@@ -37,4 +37,8 @@ public class AppointmentFinalScreen extends JFrame {
         add(confirmationLabel, gbc);
     }
 
+    public static void main(String[] args) {
+        new AppointmentFinalScreen(); 
+    }
+
 }
