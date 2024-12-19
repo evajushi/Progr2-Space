@@ -8,8 +8,14 @@ public class PatientInfo extends JFrame {
     private static final int WINDOW_HEIGHT = 800;
     private JButton yesButton;
     private JButton noButton;
+    private String selectedDate;
+    private String selectedTime;
     
-    public PatientInfo() {
+    public PatientInfo(String date, String time) {
+        
+        this.selectedDate = date;
+        this.selectedTime = time;
+        
         setTitle("Στοιχεία Ασθενή");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,19 +74,19 @@ public class PatientInfo extends JFrame {
 
         yesButton.addActionListener(e -> {
             dispose();
-            new OldPatientWindow(); 
+            new OldPatientWindow(selectedDate, selectedTime); 
         });
 
         noButton.addActionListener(e -> {
             dispose(); 
-            new NewPatientWindow(); 
+            new NewPatientWindow(selectedDate, selectedTime); 
         });
    
     }
     
 
     public static void main(String[] args) {
-        new PatientInfo();
+        new PatientInfo("__/__/___", "9:00");
     }
 }
 
