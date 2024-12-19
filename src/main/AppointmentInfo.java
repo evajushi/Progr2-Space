@@ -7,6 +7,7 @@ public class AppointmentInfo extends JFrame {
     private static final int WINDOW_WIDTH = 1200; 
     private static final int WINDOW_HEIGHT = 800;
     private JComboBox<String> timeComboBox;
+    private JFormattedTextField dateField;
 
 	
     public AppointmentInfo() {
@@ -87,7 +88,7 @@ public class AppointmentInfo extends JFrame {
             e.printStackTrace();
         }
 
-        JFormattedTextField dateField = new JFormattedTextField(dateFormatter);
+        dateField = new JFormattedTextField(dateFormatter);
         dateField.setFont(new Font("Arial", Font.PLAIN, 16));
         dateField.setColumns(10);
         innerGbc.gridx = 1;
@@ -118,7 +119,7 @@ public class AppointmentInfo extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weightx = 1.0; // Επέκταση προς τα αριστερά
+        gbc.weightx = 1.0; 
         add(dateTimePanel, gbc);
     }
     
@@ -139,8 +140,13 @@ public class AppointmentInfo extends JFrame {
         add(submitButton, gbc); 
 
         submitButton.addActionListener(e -> {
-		    dispose(); 
-		    new PatientInfo(); 		
+
+	    String selectedDate = dateField.getText();
+            String selectedTime = (String) timeComboBox.getSelectedItem(); 
+            
+	    dispose(); 
+	    new PatientInfo(selectedDate, selectedTime); 	
+		
         });
     }
 
