@@ -48,7 +48,7 @@ public class AppointmentFinalScreen extends JFrame {
         
     }
 
-private void addDateLabel(String date) {
+    private void addDateLabel(String date) {
     	
         JLabel dateLabel = new JLabel("Ημερομηνία: " + date);
         dateLabel.setFont(new Font("Arial", Font.PLAIN, LABEL_FONT_SIZE));
@@ -70,5 +70,12 @@ private void addDateLabel(String date) {
         add(timeLabel, gbc);
         
     }
+
+    public static void main(String[] args) {
+    	
+        new AppointmentFinalScreen("__/__/___", "9:00");
+        
+    }
+    
     
 }
