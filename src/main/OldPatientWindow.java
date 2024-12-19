@@ -7,8 +7,13 @@ class OldPatientWindow extends JFrame {
     private static final int FIELD_WIDTH = 20;
     private static final int BUTTON_WIDTH = 120;
     private static final int BUTTON_HEIGHT = 50;
+    private String selectedDate;
+    private String selectedTime;
 
-    public OldPatientWindow() {
+    public OldPatientWindow(String date, String time) {
+
+        this.selectedDate = date;
+        this.selectedTime = time;
         
         setTitle("AMKA");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -67,7 +72,7 @@ class OldPatientWindow extends JFrame {
 
         submitButton.addActionListener(e -> {
             dispose();
-            new AppointmentFinalScreen(); 
+            new AppointmentFinalScreen(selectedDate, selectedTime); 
         });
 
     }
@@ -75,7 +80,7 @@ class OldPatientWindow extends JFrame {
 
     public static void main(String[] args) {
     	
-        new OldPatientWindow();
+        new OldPatientWindow("__/__/___", "9:00");
         
     }
   
