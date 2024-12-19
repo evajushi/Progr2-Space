@@ -22,4 +22,19 @@ public class AppointmentFinalScreen extends JFrame {
 
         setVisible(true);
     }
+
+    public void showMessage() {
+        JLabel confirmationLabel = new JLabel("Το Ραντεβού σας έχει επιβεβαιωθεί!");
+        confirmationLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        confirmationLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        gbc.insets = new Insets(20, 20, 20, 20); 
+        gbc.gridx = 0;
+        gbc.gridy = 0; 
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        add(confirmationLabel, gbc);
+    }
+
 }
