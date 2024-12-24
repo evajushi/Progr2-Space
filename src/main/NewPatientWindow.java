@@ -31,6 +31,56 @@ public class NewPatientWindow extends JFrame {
         setVisible(true);
         
     }
+
+    private JPanel createMainPanel(Color lightBlue) {
+        
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        mainPanel.setBackground(lightBlue);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
+
+        JPanel leftPanel = createLeftPanel(lightBlue);
+        JPanel rightPanel = createRightPanel(lightBlue);
+
+        mainPanel.add(leftPanel);
+        mainPanel.add(Box.createRigidArea(new Dimension(50, 0)));
+        mainPanel.add(rightPanel);
+
+        return mainPanel;
+        
+    }
+
+    private JPanel createLeftPanel(Color lightBlue) {
+        
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.setBackground(lightBlue);
+
+        leftPanel.add(createLabel("Παρακαλώ εισάγετε τα στοιχεία σας: ", 26));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        leftPanel.add(createFieldLabelAndTextField("Όνομα: "));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        leftPanel.add(createFieldLabelAndTextField("Έπιθετο: "));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        leftPanel.add(createDateFieldPanel());
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        leftPanel.add(createFieldLabelAndTextField("Διεύθυνση: "));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        leftPanel.add(createFieldLabelAndTextField("Κινητό: "));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        leftPanel.add(createFieldLabelAndTextField("Email: "));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        return leftPanel;
+        
+    }
+
     
   
 }
