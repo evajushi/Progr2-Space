@@ -4,7 +4,7 @@ public class Doctor {
     private String specialization;
     private boolean availableTime;
     
-    public Doctor(String name, String specialization, String availableTime, String surname) {
+    public Doctor(String name, String specialization, boolean availableTime, String surname) {
         this.name = name;
         this.surname = surname;
         this.specialization = specialization;
