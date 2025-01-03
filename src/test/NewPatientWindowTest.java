@@ -15,7 +15,7 @@ public class NewPatientWindowTest {
     @Before
     public void setUp() {
       
-        window = new NewPatientWindow("2024-12-31", "09:00");
+        window = new NewPatientWindow("31/12/2024", "09:00");
       
     }
 
