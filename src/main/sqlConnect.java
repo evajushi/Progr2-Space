@@ -47,5 +47,11 @@ public class sqlConnect {
         PreparedStatement selectStmt = myCon.prepareStatement("SELECT * FROM" + tableName);
         selectStmt.executeQuery();
     }
+
+    public void selectAMKA(String amkaString) {
+        String sql = "SELECT * FROM Patient WHERE AMKA = " + amkaString;
+        PreparedStatement selectStmt = myCon.prepareStatement(sql);
+        selectStmt.execute();
+    }
 }
         
