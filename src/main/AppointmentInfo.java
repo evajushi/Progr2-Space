@@ -42,7 +42,7 @@ public class AppointmentInfo extends JFrame {
         label.setFont(new Font("Arial", Font.PLAIN, 22));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(label, BorderLayout.NORTH);
-        
+        // List<Doctors> = db.getDoctors;
         String[] options = {"Παθολόγος", "Καρδιολόγος", "Γυναικολόγος", "Ορθοπαιδικός", "Δερματολόγος", 
                             "Παιδίατρος", "Νευρολόγος", "Ενδοκρινολόγος", "Ψυχίατρος", "Οφθαλμίατρος"};
         
