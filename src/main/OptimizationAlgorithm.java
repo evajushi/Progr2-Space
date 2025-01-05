@@ -1,69 +1,61 @@
 package space;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class OptimizationAlgorithm {
-    private List<Appointment> appointments;
-    private List<Doctor> doctors;
+    private DatabaseManager dbManager;
 
-    public OptimizationAlgorithm(List<Appointment> appointments, List<Doctor> doctors) {
-        this.appointments = appointments;
-        this.doctors = doctors;
+    public OptimizationAlgorithm(DatabaseManager dbManager) {
+        this.dbManager = dbManager;
     }
 
-    public void optimizeSchedule() {
-        // Ταξινόμηση ραντεβού κατά προτεραιότητα (από υψηλή σε χαμηλή)
-        appointments.sort(Comparator.comparingInt(Appointment::getPriority).reversed());
+    /**
+     * Ελέγχει αν η ώρα είναι διαθέσιμη για την ειδικότητα και την ημερομηνία.
+     * 
+     * @param specialty Η ειδικότητα
+     * @param date      Η ημερομηνία
+     * @param time      Η ώρα
+     * @return true αν η ώρα είναι διαθέσιμη, αλλιώς false
+     */
+    public boolean isTimeSlotAvailable(String specialty, String date, String time) {
+        // Ανάκτηση ραντεβού για την ειδικότητα και την ημερομηνία
+        List<Appointment> appointments = dbManager.getAppointmentsByDateAndSpecialty(date, specialty);
 
-        // Κατανομή ραντεβού στους διαθέσιμους γιατρούς
-        List<Appointment> unassignedAppointments = new ArrayList<>();
+        // Έλεγχος αν η ώρα είναι κατειλημμένη
         for (Appointment appointment : appointments) {
-            boolean assigned = false;
-
-            for (Doctor doctor : doctors) {
-                // Έλεγχος ειδικότητας
-                if (!doctor.getSpecialization().equalsIgnoreCase(appointment.getDoctor().getSpecialization())) {
-                    continue;
-                }
-
-                // Έλεγχος διαθεσιμότητας για το συγκεκριμένο χρονικό διάστημα
-                if (doctor.isAvailable(appointment.getDateTime().toLocalTime())
-                        && doctor.getAvailableMinutes() >= appointment.getDuration()) {
-
-                    // Ενημέρωση διαθέσιμων λεπτών του γιατρού
-                    doctor.setAvailableMinutes(doctor.getAvailableMinutes() - appointment.getDuration());
-
-                    // Εμφάνιση ανάθεσης
-                    System.out.println("Assigned: " + appointment.getDetails() +
-                            " to Doctor: " + doctor.getFullname());
-                    assigned = true;
-                    break;
-                }
+            if (appointment.getDateTime().toLocalTime().toString().equals(time)) {
+                return false; // Η ώρα είναι κατειλημμένη
             }
+        }
+        return true; // Η ώρα είναι διαθέσιμη
+    }
 
-            // Αν το ραντεβού δεν βρήκε διαθέσιμο γιατρό
-            if (!assigned) {
-                System.out.println("Could not assign appointment: " + appointment.getDetails());
-                unassignedAppointments.add(appointment);
+    /**
+     * Προτείνει εναλλακτικές ώρες για την επιλεγμένη ειδικότητα και ημερομηνία.
+     * 
+     * @param specialty Η ειδικότητα
+     * @param date      Η ημερομηνία
+     * @param doctors   Λίστα με τους διαθέσιμους γιατρούς
+     * @return Λίστα με τις προτεινόμενες ώρες
+     */
+    public List<String> suggestAlternativeTimes(String specialty, String date, List<Doctor> doctors) {
+        List<String> suggestedTimes = new ArrayList<>();
+
+        // Ελέγξτε όλους τους γιατρούς της ειδικότητας
+        for (Doctor doctor : doctors) {
+            if (doctor.getSpecialization().equalsIgnoreCase(specialty)) {
+                for (LocalTime time : doctor.getAvailableTimeSlots()) {
+                    // Αν η ώρα είναι διαθέσιμη, προσθέστε την στις προτάσεις
+                    if (isTimeSlotAvailable(specialty, date, time.toString())) {
+                        suggestedTimes.add(time.toString());
+                    }
+                }
             }
         }
 
-        // Εμφάνιση μη ανατεθειμένων ραντεβού
-        if (!unassignedAppointments.isEmpty()) {
-            System.out.println("\n--- Unassigned Appointments ---");
-            for (Appointment unassigned : unassignedAppointments) {
-                System.out.println(unassigned.getDetails() + " at " + unassigned.getDateTime());
-            }
-        }
-    }
-
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public List<Doctor> geDoctors() {
-        return doctors;
+        // Επιστροφή των προτεινόμενων ωρών
+        return suggestedTimes;
     }
 }
