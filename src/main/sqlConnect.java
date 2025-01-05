@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.Time;
 
-public class sqlConnection2 {
+public class sqlConnect {
     private String path = "jdbc:mysql://sql7.freesqldatabase.com:3306/sql7755696";
     private String username = "sql7755696";
     private String password = "tGKZtBXEFM"; 
