@@ -1,64 +1,58 @@
-package space;
+import org.junit.jupiteer.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-public class PatientTest {
-
+import static org.juniter.api.Assertions.*;
+class PatientTest {
     private Patient patient;
 
-    @Before
-    public void setUp() {
-        patient = new Patient("Alice", "Brown", "1990-05-15", "123 Main St", "555-1234",
-                "alice@example.com", 123456789, "Female");
+    @BeforeEach
+    void setUp() {
+        patient = new Patient("Maria", "Berg", "2000-06-01", "567 Main Street", "890-0987", "mariaberg@example.com", "Female", "123456789");
     }
 
     @Test
-    public void testGetName() {
-        assertEquals("Alice", patient.getName());
+    void testGetName() {
+        assertEquals("Maria", patient.getName());
     }
 
     @Test
-    public void testGetSurname() {
-        assertEquals("Brown", patient.getSurname());
+    void testGetSurname() {
+        assertEquals("Berg", patient.getSurname());
     }
 
     @Test
-    public void testGetDateOfBirth() {
-        assertEquals("1990-05-15", patient.getDateOfBirth());
+    void testGetDateOfBirth() {
+        assertEquals("2000-06-01", patient.getDateOfBirth());
     }
 
     @Test
-    public void testGetAddress() {
-        assertEquals("123 Main St", patient.getAddress());
+    void testGetAddress() {
+        assertEquals("567 Main Street", patient.getAddress());
     }
 
     @Test
-    public void testGetPhoneNumber() {
-        assertEquals("555-1234", patient.getPhoneNumber());
+    void testGetPhoneNumber() {
+        assertEquals("890-0987", patient.getPhoneNumber());
     }
 
     @Test
-    public void testGetEmail() {
-        assertEquals("alice@example.com", patient.getEmail());
+    void testGetEmail() {
+        assertEquals("mariaberg@example.com", patient.getEmail());
     }
 
     @Test
-    public void testGetAmka() {
-        assertEquals(123456789, patient.getAmka());
+    void testGetAmka() {
+        assertEquals("123456789", patient.getAmka());
     }
 
     @Test
-    public void testGetGender() {
+    void testGetGender() {
         assertEquals("Female", patient.getGender());
     }
 
     @Test
-    public void testToString() {
-        String expected = "Patient{name='Alice', surname='Brown', dateOfBirth='1990-05-15', address='123 Main St', " +
-                "phoneNumber='555-1234', email='alice@example.com', amka='123456789', gender='Female'}";
+    void testToString() {
+        String expected = "Patient{name='Maria', surname='Berg', dateOfBirth='2000-06-01', address='567 Main Street', phoneNumber='890-0987', email='mariaberg@example.com', amka='123456789', gender='Female'}";
         assertEquals(expected, patient.toString());
     }
 }

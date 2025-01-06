@@ -1,11 +1,9 @@
-package space;
-
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
 
 public class AppointmentTest {
 
@@ -15,22 +13,20 @@ public class AppointmentTest {
 
     @Before
     public void setUp() {
-        patient = new Patient("Alice", "Brown", "1990-05-15", "123 Main St", "555-1234",
-                "alice@example.com", 123456789, "Female");
-        doctor = new Doctor("John", "Doe", "Cardiologist", null, 180);
-
-        appointment = new Appointment("Cardiologist", LocalDateTime.of(2024, 12, 9, 9, 0),
-                patient, doctor, 1, 30);
+        patient = new Patient("Maria", "Berg", "2000-06-01", "567 Main Street", "890-0987", "mariaberg@example.com", "Female", "123456789");
+        doctor = new Doctor ("John", "Doe", "Cardiologist", null, 180);
+        appointment = new Appointment("Cardiologist", LocalDateTime.of(2024, 12, 9, 9, 0), patient, doctor, 1, 30);
     }
 
     @Test
-    public void testAppointmentDetails() {
-        assertEquals("Specialization: Cardiologist, Patient: Alice, Doctor: John Doe",
-                appointment.getDetails());
-    }
+    public void testAppointment() {
 
+        assertEquals("Specialization: Cardiologist, Patient: Maria Berg, Doctor: John Doe", appointment.getDetails());
+    }
+       
     @Test
     public void testGetDateTime() {
         assertEquals(LocalDateTime.of(2024, 12, 9, 9, 0), appointment.getDateTime());
+
     }
 }
